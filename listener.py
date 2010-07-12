@@ -4,11 +4,13 @@ from datetime import datetime
 import platform
 
 # Specify a datalog file
-LOGFILENAME = "showerdatalog_v2.csv"
+LOGFILENAME = "showerdatalog.csv"
 # open our datalogging file
 logfile = None
 try:
-	logfile = open(LOGFILENAME, 'r+')
+	logfile = open(LOGFILENAME, 'r+') # if this doesn't throw an error, the file exists.
+	logfile.close()
+	logfile = open(LOGFILENAME, 'a') # assumes it's formatted correctly, and just append data
 except IOError:
     # didn't exist yet
     logfile = open(LOGFILENAME, 'w+')
